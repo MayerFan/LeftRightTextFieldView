@@ -4,8 +4,4 @@
 
 ## 概览
 
-### 缩略图
-![avatar](/Demo/Demo/Images/summary1.png)
-
-### 高清图
 ![avatar](/Demo/Demo/Images/summary.png)
