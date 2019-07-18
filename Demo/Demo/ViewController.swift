@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         close.setTitleColor(UIColor.black, for: .normal)
         close.addTarget(self, action: #selector(closeOnClick), for: .touchUpInside)
         
-        summaryLabel.text = "一、所有控件都可定制边框颜色、hover颜色和光标颜色\n二、可以统一指定输入过程的过滤规则，如果需要更细度的过滤规则，则需要在代理回调方法中自定义处理"
+        summaryLabel.text = "一、可定制边框颜色、hover颜色和光标颜色\n二、可以统一指定输入过程的过滤规则，如果需要更细度的过滤规则，则需要在代理回调方法中自定义处理"
         summaryLabel.font = kFontRegular(13)
         summaryLabel.textColor = UIColor(0x23c0af)
         summaryLabel.numberOfLines = 0
