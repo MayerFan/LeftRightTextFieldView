@@ -19,6 +19,15 @@
 import UIKit
 import SnapKit
 
+enum kInputFilterType {
+    /// 纯数字
+    case numer
+    /// 正整数
+    case positveNumer
+    /// 带小数的数字, 参数为保留的小数位数
+    case decimalNumer(Int)
+}
+
 class LeftRightTextFieldView: UIView {
     
     fileprivate lazy var leftLabel: UILabel = {
@@ -37,6 +46,9 @@ class LeftRightTextFieldView: UIView {
     /// 右侧闭包
     fileprivate var rightClickBlock: ((Any?) -> Void)?
     
+    /// 用于处理输入过滤的临时文本
+    fileprivate var tempText: String = ""
+    
     /// 左侧文本宽度
     var leftWidth: CGFloat {
         get {
@@ -49,6 +61,11 @@ class LeftRightTextFieldView: UIView {
     
     let textfield = UITextField()
     
+    /// textfeild距离左侧的固定距离. 默认是距离左侧文本5间距
+    var leftDistance: CGFloat?
+    
+    var inputFilterType: kInputFilterType?
+    
     /// 页边距 默认为（0， 10， 0， 10）
     var inset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10) {
         didSet {
@@ -57,9 +74,6 @@ class LeftRightTextFieldView: UIView {
             }
         }
     }
-    
-    /// textfeild距离左侧的固定距离. 默认是距离左侧文本5间距
-    var leftDistance: CGFloat?
     
     /// 左侧文本
     var leftTitle: String? {
@@ -182,7 +196,6 @@ class LeftRightTextFieldView: UIView {
     }
     
     
-    
     //MARK: - init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -191,7 +204,6 @@ class LeftRightTextFieldView: UIView {
     }
     fileprivate func initCommon() {
         backgroundColor = UIColor(0xf8f9fd)
-//        layer.cornerRadius = 5
         
         textfield.textColor = UIColor(0x242c4d)
         textfield.font = kFontMedium(16)
@@ -201,6 +213,7 @@ class LeftRightTextFieldView: UIView {
         
         NotificationCenter.default.addObserver(self, selector: #selector(textfeildBeginEdit), name: UITextField.textDidBeginEditingNotification, object: textfield)
         NotificationCenter.default.addObserver(self, selector: #selector(textfeildEndEdit), name: UITextField.textDidEndEditingNotification, object: textfield)
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: textfield)
     }
     func initConstraints() {
         addSubview(textfield)
@@ -265,6 +278,30 @@ extension LeftRightTextFieldView {
         if let color = borderColor {
             layer.borderColor = color.cgColor
         }
+    }
+    
+    @objc func textDidChange() {
+        print("===\(tempText) ===\(textfield.text!)")
+        guard let _ = inputFilterType else { return}
+        
+        let text = textfield.text!
+        
+        switch inputFilterType! {
+        case .numer:
+            if text != "" && !text.isNumber() {
+                textfield.text = tempText
+            }
+        case .positveNumer:
+            if text != "" && !text.isPositiveNumber() {
+                textfield.text = tempText
+            }
+        case .decimalNumer(let point):
+            if text != "" && !text.filterDecimalNumber(point: point) {
+                textfield.text = tempText
+            }
+        }
+        
+        tempText = textfield.text!
     }
     
     @objc func tapClick() {

@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     fileprivate let scrollView = UIScrollView()
     fileprivate let contentView = UIView()
     
+    fileprivate let close = UIButton()
     fileprivate let summaryLabel = UILabel()
     
     fileprivate let titleLabel1 = UILabel()
@@ -33,6 +34,15 @@ class ViewController: UIViewController {
     fileprivate let titleLabel6 = UILabel()
     fileprivate let textFieldView6 = LeftRightTextFieldView()
     
+    fileprivate let titleLabel7 = UILabel()
+    fileprivate let textFieldView7 = LeftRightTextFieldView()
+    
+    fileprivate let titleLabel8 = UILabel()
+    fileprivate let textFieldView8 = LeftRightTextFieldView()
+    
+    fileprivate let titleLabel9 = UILabel()
+    fileprivate let textFieldView9 = LeftRightTextFieldView()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +53,13 @@ class ViewController: UIViewController {
 
     fileprivate func initCommon() {
         
-        summaryLabel.text = "所有控件都可定制边框颜色、hover颜色和光标颜色"
+        close.setTitle("关闭键盘", for: .normal)
+        close.setTitleColor(UIColor.black, for: .normal)
+        close.addTarget(self, action: #selector(closeOnClick), for: .touchUpInside)
+        
+        summaryLabel.text = "一、所有控件都可定制边框颜色、hover颜色和光标颜色\n二、可以统一指定输入过程的过滤规则，如果需要更细度的过滤规则，则需要在代理回调方法中自定义处理"
         summaryLabel.font = kFontRegular(13)
+        summaryLabel.textColor = UIColor(0x23c0af)
         summaryLabel.numberOfLines = 0
         
         // 1
@@ -89,7 +104,7 @@ class ViewController: UIViewController {
         textFieldView4.leftTitle = "手机验证"
         textFieldView4.rightTitle = "获取验证码"
         textFieldView4.placeHolder = "请输入手机号码"
-        textFieldView4.leftDistance = 80
+        textFieldView4.leftDistance = 90
         textFieldView4.borderCorner = 5
         textFieldView4.rightColor = UIColor(0x23c0af)
         textFieldView4.textfield.textAlignment = .left
@@ -105,7 +120,7 @@ class ViewController: UIViewController {
         titleLabel5.font = kFontRegular(13)
         textFieldView5.placeHolder = "请输入验证码"
         textFieldView5.borderCorner = 5
-        textFieldView5.textfield.textAlignment = .left
+        textFieldView5.textfield.textAlignment = .center
         textFieldView5.borderColor = UIColor(0xd1e1f2)
         textFieldView5.hoverColor = UIColor(0x23c0af)
         textFieldView5.cursorColor = UIColor(0x23c0af)
@@ -113,6 +128,7 @@ class ViewController: UIViewController {
         // 6
         titleLabel6.text = "6. 左侧文本，右侧文本，中间输入框基础上调整两侧边距且去除边框圆角"
         titleLabel6.font = kFontRegular(13)
+        titleLabel6.numberOfLines = 0
         textFieldView6.leftTitle = "金额"
         textFieldView6.rightTitle = "CNY"
         textFieldView6.placeHolder = "请输入金额"
@@ -122,15 +138,37 @@ class ViewController: UIViewController {
         textFieldView6.cursorColor = UIColor(0x23c0af)
         
         // 7
-//        titleLabel6.text = "6. 输入框过滤匹配-仅支持数字"
-//        titleLabel6.font = kFontRegular(13)
-//        textFieldView6.leftTitle = "金额"
-//        textFieldView6.rightTitle = "CNY"
-//        textFieldView6.placeHolder = "请输入金额"
-//        textFieldView6.inset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
-//        textFieldView6.borderColor = UIColor(0xd1e1f2)
-//        textFieldView6.hoverColor = UIColor(0x23c0af)
-//        textFieldView6.cursorColor = UIColor(0x23c0af)
+        titleLabel7.text = "7. 输入框过滤非纯数字"
+        titleLabel7.font = kFontRegular(13)
+        textFieldView7.leftTitle = "金额"
+        textFieldView7.rightTitle = "CNY"
+        textFieldView7.placeHolder = "非[0-9]皆不可输入"
+        textFieldView7.inputFilterType = .numer
+        textFieldView7.borderColor = UIColor(0xd1e1f2)
+        textFieldView7.hoverColor = UIColor(0x23c0af)
+        textFieldView7.cursorColor = UIColor(0x23c0af)
+        
+        // 8
+        titleLabel8.text = "8. 输入框过滤非正整数"
+        titleLabel8.font = kFontRegular(13)
+        textFieldView8.leftTitle = "金额"
+        textFieldView8.rightTitle = "CNY"
+        textFieldView8.placeHolder = "只能输入非正整数"
+        textFieldView8.inputFilterType = .positveNumer
+        textFieldView8.borderColor = UIColor(0xd1e1f2)
+        textFieldView8.hoverColor = UIColor(0x23c0af)
+        textFieldView8.cursorColor = UIColor(0x23c0af)
+        
+        // 9
+        titleLabel9.text = "9. 输入框过滤 仅支持数字或小数，且保留2小数位数"
+        titleLabel9.font = kFontRegular(13)
+        textFieldView9.leftTitle = "金额"
+        textFieldView9.rightTitle = "CNY"
+        textFieldView9.placeHolder = "仅支持数字或小数，且保留2小数位数"
+        textFieldView9.inputFilterType = .decimalNumer(2)
+        textFieldView9.borderColor = UIColor(0xd1e1f2)
+        textFieldView9.hoverColor = UIColor(0x23c0af)
+        textFieldView9.cursorColor = UIColor(0x23c0af)
         
     }
     
@@ -138,6 +176,7 @@ class ViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         
+        contentView.addSubview(close)
         contentView.addSubview(summaryLabel)
         
         contentView.addSubview(titleLabel1)
@@ -158,17 +197,33 @@ class ViewController: UIViewController {
         contentView.addSubview(titleLabel6)
         contentView.addSubview(textFieldView6)
         
+        contentView.addSubview(titleLabel7)
+        contentView.addSubview(textFieldView7)
+        
+        contentView.addSubview(titleLabel8)
+        contentView.addSubview(textFieldView8)
+        
+        contentView.addSubview(titleLabel9)
+        contentView.addSubview(textFieldView9)
+        
         
         scrollView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
         contentView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
-            make.width.height.equalToSuperview()
+            make.width.equalToSuperview()
+            make.bottom.equalTo(textFieldView9).offset(250)
         }
         
+        close.snp.makeConstraints { (make) in
+            make.top.equalTo(0)
+            make.left.equalTo(15)
+            make.right.equalTo(-15)
+            make.height.equalTo(60)
+        }
         summaryLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(50)
+            make.top.equalTo(close.snp.bottom)
             make.left.equalTo(15)
             make.right.equalTo(-15)
         }
@@ -232,7 +287,46 @@ class ViewController: UIViewController {
             make.left.right.equalTo(summaryLabel)
             make.height.equalTo(44)
         }
+        
+        titleLabel7.snp.makeConstraints { (make) in
+            make.top.equalTo(textFieldView6.snp.bottom).offset(20)
+            make.left.right.equalTo(summaryLabel)
+        }
+        textFieldView7.snp.makeConstraints { (make) in
+            make.top.equalTo(titleLabel7.snp.bottom).offset(10)
+            make.left.right.equalTo(summaryLabel)
+            make.height.equalTo(44)
+        }
+        
+        titleLabel8.snp.makeConstraints { (make) in
+            make.top.equalTo(textFieldView7.snp.bottom).offset(20)
+            make.left.right.equalTo(summaryLabel)
+        }
+        textFieldView8.snp.makeConstraints { (make) in
+            make.top.equalTo(titleLabel8.snp.bottom).offset(10)
+            make.left.right.equalTo(summaryLabel)
+            make.height.equalTo(44)
+        }
+        
+        titleLabel9.snp.makeConstraints { (make) in
+            make.top.equalTo(textFieldView8.snp.bottom).offset(20)
+            make.left.right.equalTo(summaryLabel)
+        }
+        textFieldView9.snp.makeConstraints { (make) in
+            make.top.equalTo(titleLabel9.snp.bottom).offset(10)
+            make.left.right.equalTo(summaryLabel)
+            make.height.equalTo(44)
+        }
+    
     }
 
+}
+
+
+extension ViewController {
+    
+    @objc func closeOnClick() {
+        view.endEditing(true)
+    }
 }
 

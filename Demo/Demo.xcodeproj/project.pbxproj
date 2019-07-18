@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		75CE0BE022DEC8F300346BC0 /* DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE0BDF22DEC8F300346BC0 /* DemoUITests.swift */; };
 		75CE0BEF22DEC9CA00346BC0 /* LeftRightTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE0BEE22DEC9CA00346BC0 /* LeftRightTextFieldView.swift */; };
 		75CE0BF222DECE8C00346BC0 /* UIColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE0BF122DECE8C00346BC0 /* UIColor+Helper.swift */; };
+		75CE0BF622DF42B900346BC0 /* String+Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE0BF522DF42B900346BC0 /* String+Match.swift */; };
 		C2D825DA657A1422C2EA4A1E /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6665C5AD183092DA183D2DDF /* Pods_Demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		75CE0BE122DEC8F300346BC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75CE0BEE22DEC9CA00346BC0 /* LeftRightTextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftRightTextFieldView.swift; sourceTree = "<group>"; };
 		75CE0BF122DECE8C00346BC0 /* UIColor+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Helper.swift"; sourceTree = "<group>"; };
+		75CE0BF522DF42B900346BC0 /* String+Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Match.swift"; sourceTree = "<group>"; };
 		8554F387F001811F66397B2E /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,7 +91,6 @@
 				249D366BD16492582250FB7D /* Pods-Demo.debug.xcconfig */,
 				8554F387F001811F66397B2E /* Pods-Demo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -168,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				75CE0BF122DECE8C00346BC0 /* UIColor+Helper.swift */,
+				75CE0BF522DF42B900346BC0 /* String+Match.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -347,6 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75CE0BF622DF42B900346BC0 /* String+Match.swift in Sources */,
 				75CE0BEF22DEC9CA00346BC0 /* LeftRightTextFieldView.swift in Sources */,
 				75CE0BC222DEC8F200346BC0 /* ViewController.swift in Sources */,
 				75CE0BC022DEC8F200346BC0 /* AppDelegate.swift in Sources */,
@@ -529,6 +532,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZNMUAN4T83;
 				INFOPLIST_FILE = Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -548,6 +552,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZNMUAN4T83;
 				INFOPLIST_FILE = Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
