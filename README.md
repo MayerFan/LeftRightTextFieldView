@@ -4,4 +4,4 @@
 
 ## 概览
 
-![avatar](../Demo/Demo/Images/summary1.png)
+![avatar](/Demo/Demo/Images/summary1.png)
