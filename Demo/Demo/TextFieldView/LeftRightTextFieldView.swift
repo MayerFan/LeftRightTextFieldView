@@ -43,6 +43,13 @@ class LeftRightTextFieldView: UIView {
         label.textAlignment = .right
         return label
     }()
+    /// 下划线
+    fileprivate lazy var underline: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(0xeff2f6)
+        addSubview(view)
+        return view
+    }()
     /// 右侧闭包
     fileprivate var rightClickBlock: ((Any?) -> Void)?
     
@@ -65,6 +72,11 @@ class LeftRightTextFieldView: UIView {
     var leftDistance: CGFloat?
     
     var inputFilterType: kInputFilterType?
+    
+    /// 是否显示下划线 默认不显示
+    var showUnderline = false
+    
+    var underlineColor: UIColor?
     
     /// 页边距 默认为（0， 10， 0， 10）
     var inset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10) {
@@ -241,7 +253,7 @@ extension LeftRightTextFieldView {
         if maxW == 0 && maxH == 0 { return }
         
         if let title = leftTitle {
-            let w = title.boundingSize(size: CGSize.init(width: maxW, height: maxH), font: leftFont).width
+            let w = title.boundingSize(size: CGSize(width: maxW, height: maxH), font: leftFont).width
             
             var leftW = w + 5;
             if let _ = leftDistance {
@@ -255,12 +267,17 @@ extension LeftRightTextFieldView {
         }
         
         if let title = rightTitle {
-            let w = title.boundingSize(size: CGSize.init(width: maxW, height: maxH), font: rightFont).width
+            let w = title.boundingSize(size: CGSize(width: maxW, height: maxH), font: rightFont).width
             var x = CGFloat(0)
             if let _ = textfield.rightView {
                 x = textfield.rightView!.frame.minX
             }
             rightLabel.frame = CGRect(x: x, y: 0, width: w + 5, height: maxH)
+        }
+        
+        // 处理下划线
+        if showUnderline {
+            underline.frame = CGRect(x: 0, y: maxH - 0.5, width: frame.width, height: 0.5)
         }
     }
 }

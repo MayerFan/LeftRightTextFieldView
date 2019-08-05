@@ -43,6 +43,9 @@ class ViewController: UIViewController {
     fileprivate let titleLabel9 = UILabel()
     fileprivate let textFieldView9 = LeftRightTextFieldView()
     
+    fileprivate let titleLabel10 = UILabel()
+    fileprivate let textFieldView10 = LeftRightTextFieldView()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +60,7 @@ class ViewController: UIViewController {
         close.setTitleColor(UIColor.black, for: .normal)
         close.addTarget(self, action: #selector(closeOnClick), for: .touchUpInside)
         
-        summaryLabel.text = "一、可定制边框颜色、hover颜色和光标颜色\n二、可以统一指定输入过程的过滤规则，如果需要更细度的过滤规则，则需要在代理回调方法中自定义处理"
+        summaryLabel.text = "一、可定制边框颜色、hover颜色和光标颜色\n二、可以统一指定输入过程的过滤规则，如果需要更细度的过滤规则，则需要在代理回调方法中自定义处理\n三、没有边框仅有下划线的UI样式"
         summaryLabel.font = kFontRegular(13)
         summaryLabel.textColor = UIColor(0x23c0af)
         summaryLabel.numberOfLines = 0
@@ -170,6 +173,19 @@ class ViewController: UIViewController {
         textFieldView9.hoverColor = UIColor(0x23c0af)
         textFieldView9.cursorColor = UIColor(0x23c0af)
         
+        // 10
+        titleLabel10.text = "10. 没有边框且底部仅有下划线"
+        titleLabel10.font = kFontRegular(13)
+        textFieldView10.backgroundColor = .clear
+        textFieldView10.showUnderline = true
+        textFieldView10.rightTitle = "获取验证码"
+        textFieldView10.placeHolder = "请输入验证码"
+        textFieldView10.textfield.textAlignment = .left
+        textFieldView10.rightColor = UIColor(0x23c0af)
+        textFieldView10.bindRightAction { [unowned textFieldView4](result) in
+            textFieldView4.rightTitle = "正在获取验证码"
+        }
+        
     }
     
     fileprivate func initConstraits() {
@@ -206,6 +222,9 @@ class ViewController: UIViewController {
         contentView.addSubview(titleLabel9)
         contentView.addSubview(textFieldView9)
         
+        contentView.addSubview(titleLabel10)
+        contentView.addSubview(textFieldView10)
+        
         
         scrollView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -213,7 +232,7 @@ class ViewController: UIViewController {
         contentView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
             make.width.equalToSuperview()
-            make.bottom.equalTo(textFieldView9).offset(250)
+            make.bottom.equalTo(textFieldView10).offset(250)
         }
         
         close.snp.makeConstraints { (make) in
@@ -314,6 +333,16 @@ class ViewController: UIViewController {
         }
         textFieldView9.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabel9.snp.bottom).offset(10)
+            make.left.right.equalTo(summaryLabel)
+            make.height.equalTo(44)
+        }
+        
+        titleLabel10.snp.makeConstraints { (make) in
+            make.top.equalTo(textFieldView9.snp.bottom).offset(20)
+            make.left.right.equalTo(summaryLabel)
+        }
+        textFieldView10.snp.makeConstraints { (make) in
+            make.top.equalTo(titleLabel10.snp.bottom).offset(10)
             make.left.right.equalTo(summaryLabel)
             make.height.equalTo(44)
         }
