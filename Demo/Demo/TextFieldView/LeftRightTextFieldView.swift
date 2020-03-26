@@ -9,11 +9,14 @@
 /**
  *
  *  ┌┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┐
- *  |left文本     中间输入框   right文本|
+ *   | left文本                                 中间输入框                                       right文本|
  *  └┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┘
  *  左右侧文本可选择显示
  *  右侧文案可点击
  *  可以演变多种布局样式
+ *  一、可定制边框颜色、hover颜色和光标颜色
+ *  二、可以统一指定输入过程的过滤规则，如果需要更细度的过滤规则，则需要在代理回调方法中自定义处理
+ *  三、没有边框仅有下划线的UI样式
  */
 
 import UIKit
@@ -26,6 +29,8 @@ enum kInputFilterType {
     case positveNumer
     /// 带小数的数字, 参数为保留的小数位数
     case decimalNumer(Int)
+    /// 外部自定义的正则
+    case customType(String)
 }
 
 @objcMembers
@@ -345,6 +350,10 @@ extension LeftRightTextFieldView {
             if text != "" && !text.filterDecimalNumber(point: point) {
                 textfield.text = tempText
             }
+        case .customType(let regex):
+            if text != "" && !text.isMatchCustom(regex: regex) {
+                textfield.text = tempText
+            }
         }
         
         tempText = textfield.text!
@@ -363,10 +372,33 @@ extension LeftRightTextFieldView {
     /// 右侧添加点击响应
     ///
     /// - Parameter action: 回调闭包
-    func bindRightAction(_ action: @escaping (Any?) -> Void) {
+    @objc func bindRightAction(_ action: @escaping (Any?) -> Void) {
         rightClickBlock = action
         rightLabel.isUserInteractionEnabled = true
         let tapGuesture = UITapGestureRecognizer(target: self, action: #selector(tapClick))
         rightLabel.addGestureRecognizer(tapGuesture)
+    }
+    
+    /// 仅供OC使用的 添加输入过滤类型。SWIFT 版请使用更直观的枚举属性
+    /// - Parameters:
+    ///   - type: 0： 自定义类型；1：纯数字类型；2：正整数类型；3：带小数的数字
+    ///   - content: 成对出现。对于type==0，content 为外部自定义的正则；对于type==3，content 为要保留的小数位数
+    @objc func addFilterType(_ type: Int, content: AnyObject?) -> Void {
+        switch type {
+        case 0:
+            assert(content != nil, "自定义类型需要传入正则")
+            assert(content! is String, "请输入字符串类型的正则")
+            inputFilterType = .customType(content! as! String)
+        case 1:
+            inputFilterType = .numer
+        case 2:
+            inputFilterType = .positveNumer
+        case 3:
+            assert(content != nil, "请传入需要保留的小数位数")
+            let number = content! as! NSNumber
+            inputFilterType = .decimalNumer(number.intValue)
+        default:
+            print("")
+        }
     }
 }

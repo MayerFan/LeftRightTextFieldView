@@ -115,7 +115,7 @@ class ViewController: UIViewController {
         textFieldView4.hoverColor = UIColor(0x23c0af)
         textFieldView4.cursorColor = UIColor(0x23c0af)
         textFieldView4.bindRightAction { [unowned textFieldView4](result) in
-            textFieldView4.rightTitle = "正在获取验证码"
+            textFieldView4.rightTitle = "正在获取验证码..."
         }
         
         // 5
@@ -174,7 +174,7 @@ class ViewController: UIViewController {
         textFieldView9.cursorColor = UIColor(0x23c0af)
         
         // 10
-        titleLabel10.text = "10. 没有边框且底部仅有下划线"
+        titleLabel10.text = "10. 没有边框且底部仅有下划线，下划线自由扩展"
         titleLabel10.font = kFontRegular(13)
         textFieldView10.backgroundColor = .clear
         textFieldView10.showUnderline = true
@@ -185,8 +185,8 @@ class ViewController: UIViewController {
         textFieldView10.placeHolder = "请输入验证码"
         textFieldView10.textfield.textAlignment = .left
         textFieldView10.rightColor = UIColor(0x23c0af)
-        textFieldView10.bindRightAction { [unowned textFieldView4](result) in
-            textFieldView4.rightTitle = "正在获取验证码"
+        textFieldView10.bindRightAction { [unowned textFieldView10](result) in
+            textFieldView10.rightTitle = "正在获取验证码..."
         }
         
     }

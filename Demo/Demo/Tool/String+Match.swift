@@ -77,4 +77,9 @@ extension String {
         let predicate = NSPredicate.init(format: "SELF MATCHES %@", regex)
         return predicate.evaluate(with:self)
     }
+    
+    func isMatchCustom(regex: String) -> Bool {
+        let predicate = NSPredicate.init(format: "SELF MATCHES %@", regex)
+        return predicate.evaluate(with:self)
+    }
 }
