@@ -28,6 +28,7 @@ enum kInputFilterType {
     case decimalNumer(Int)
 }
 
+@objcMembers
 class LeftRightTextFieldView: UIView {
     
     fileprivate lazy var leftLabel: UILabel = {
@@ -76,7 +77,20 @@ class LeftRightTextFieldView: UIView {
     /// 是否显示下划线 默认不显示
     var showUnderline = false
     
-    var underlineColor: UIColor?
+    var underlineColor: UIColor? {
+        didSet {
+            underline.backgroundColor = underlineColor
+        }
+    }
+    
+    /// 下划线hover颜色
+    var underlineHoverColor: UIColor?
+    
+    /// 下划线高度
+    var underlineHeight = 0.5
+    
+    /// 下划线页边距 （top，bottom 设置无效）
+    var underlineInset = UIEdgeInsets()
     
     /// 页边距 默认为（0， 10， 0， 10）
     var inset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10) {
@@ -277,7 +291,10 @@ extension LeftRightTextFieldView {
         
         // 处理下划线
         if showUnderline {
-            underline.frame = CGRect(x: 0, y: maxH - 0.5, width: frame.width, height: 0.5)
+            let X = 0 + underlineInset.left
+            let Y = maxH - CGFloat(underlineHeight);
+            let W = frame.width - underlineInset.left - underlineInset.right
+            underline.frame = CGRect(x: X, y: Y, width: W, height: CGFloat(underlineHeight))
         }
     }
 }
@@ -289,11 +306,23 @@ extension LeftRightTextFieldView {
         if let color = hoverColor {
             layer.borderColor = color.cgColor
         }
+        
+        if let color = underlineHoverColor {
+            underline.backgroundColor = color
+        }
     }
     
     @objc func textfeildEndEdit() {
         if let color = borderColor {
             layer.borderColor = color.cgColor
+        }
+        
+        if showUnderline {
+            var color = UIColor(0xeff2f6)
+            if let _ = underlineColor {
+                color = underlineColor!
+            }
+            underline.backgroundColor = color
         }
     }
     

@@ -178,6 +178,9 @@ class ViewController: UIViewController {
         titleLabel10.font = kFontRegular(13)
         textFieldView10.backgroundColor = .clear
         textFieldView10.showUnderline = true
+        textFieldView10.underlineHeight = 5
+        textFieldView10.underlineInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: -10)
+        textFieldView10.underlineHoverColor = UIColor(0x23c0af)
         textFieldView10.rightTitle = "获取验证码"
         textFieldView10.placeHolder = "请输入验证码"
         textFieldView10.textfield.textAlignment = .left
