@@ -5,6 +5,8 @@
 //  Created by MayerF on 2019/7/17.
 //  Copyright © 2019 MayerF. All rights reserved.
 //
+//  https://github.com/MayerFan/LeftRightTextFieldView
+
 //  1. 输入过程中的过滤都可以用于输入完成后的校验，但是可能条件稍微宽松
 //  2. 输入完成后的校验匹配严格
 //  3. 用于校验的都以<verify>开头， 用于过滤的都以<filter>开头， 除此之外是两者都可用的（一般以<is>或<match>）开头

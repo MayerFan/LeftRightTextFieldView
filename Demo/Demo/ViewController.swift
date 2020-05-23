@@ -71,6 +71,7 @@ class ViewController: UIViewController {
         textFieldView1.leftTitle = "金额"
         textFieldView1.rightTitle = "CNY"
         textFieldView1.placeHolder = "请输入金额"
+        textFieldView1.textPadding = 20
         textFieldView1.borderCorner = 5
         textFieldView1.borderColor = UIColor(0xd1e1f2)
         textFieldView1.hoverColor = UIColor(0x23c0af)

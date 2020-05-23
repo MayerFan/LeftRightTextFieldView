@@ -5,6 +5,7 @@
 //  Created by MayerF on 2019/4/9.
 //  Copyright © 2019 AFRO. All rights reserved.
 //
+//  https://github.com/MayerFan/LeftRightTextFieldView
 
 /**
  *
@@ -32,6 +33,26 @@ enum kInputFilterType {
     /// 外部自定义的正则
     case customType(String)
 }
+
+//MARK: - CustomTextField
+//MARK: ///
+
+class CustomTextField: UITextField {
+    var padding: CGFloat = 5
+    
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        var rect = super.textRect(forBounds: bounds)
+        rect.size.width -= padding*2
+        return rect
+    }
+    
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        var rect = super.textRect(forBounds: bounds)
+        rect.size.width -= padding*2
+        return rect
+    }
+}
+
 
 @objcMembers
 class LeftRightTextFieldView: UIView {
@@ -68,14 +89,21 @@ class LeftRightTextFieldView: UIView {
             let maxW = textfield.frame.width
             let maxH = textfield.frame.height
             let w = leftTitle!.boundingSize(size: CGSize(width: maxW, height: maxH), font: rightFont).width
-            return w + 5 + inset.left
+            return w + textPadding + inset.left
         }
     }
     
-    let textfield = UITextField()
+    let textfield = CustomTextField()
     
     /// textfeild距离左侧的固定距离. 默认是距离左侧文本5间距
     var leftDistance: CGFloat?
+    
+    /// 输入内容距离 leftview 和 rightview 的间距
+    var textPadding: CGFloat = 5 {
+        didSet {
+            textfield.padding = textPadding
+        }
+    }
     
     var inputFilterType: kInputFilterType?
     
@@ -271,28 +299,28 @@ extension LeftRightTextFieldView {
         let maxH = textfield.frame.height
         if maxW == 0 && maxH == 0 { return }
         
-        if let title = leftTitle {
-            let w = title.boundingSize(size: CGSize(width: maxW, height: maxH), font: leftFont).width
-            
-            var leftW = w + 5;
-            if let _ = leftDistance {
-                leftW = leftDistance! < leftW ? leftW : leftDistance!;
-            }
-            var x = CGFloat(0)
-            if let _ = textfield.leftView {
-                x = textfield.leftView!.frame.minX
-            }
-            leftLabel.frame = CGRect(x: x, y: 0, width: leftW, height: maxH)
-        }
-        
-        if let title = rightTitle {
-            let w = title.boundingSize(size: CGSize(width: maxW, height: maxH), font: rightFont).width
-            var x = CGFloat(0)
-            if let _ = textfield.rightView {
-                x = textfield.rightView!.frame.minX
-            }
-            rightLabel.frame = CGRect(x: x, y: 0, width: w + 5, height: maxH)
-        }
+//        if let title = leftTitle {
+//            let w = title.boundingSize(size: CGSize(width: maxW, height: maxH), font: leftFont).width
+//
+//            var leftW = w + 5;
+//            if let _ = leftDistance {
+//                leftW = leftDistance! < leftW ? leftW : leftDistance!;
+//            }
+//            var x = CGFloat(0)
+//            if let _ = textfield.leftView {
+//                x = textfield.leftView!.frame.minX
+//            }
+//            leftLabel.frame = CGRect(x: x, y: 0, width: leftW, height: maxH)
+//        }
+//
+//        if let title = rightTitle {
+//            let w = title.boundingSize(size: CGSize(width: maxW, height: maxH), font: rightFont).width
+//            var x = CGFloat(0)
+//            if let _ = textfield.rightView {
+//                x = textfield.rightView!.frame.minX
+//            }
+//            rightLabel.frame = CGRect(x: x, y: 0, width: w + 5, height: maxH)
+//        }
         
         // 处理下划线
         if showUnderline {

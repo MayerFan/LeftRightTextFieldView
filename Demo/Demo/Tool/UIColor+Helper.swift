@@ -5,6 +5,7 @@
 //  Created by MayerF on 2019/7/17.
 //  Copyright © 2019 MayerF. All rights reserved.
 //
+//  https://github.com/MayerFan/LeftRightTextFieldView
 
 import UIKit
 
