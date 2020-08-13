@@ -303,28 +303,31 @@ extension LeftRightTextFieldView {
         let maxH = textfield.frame.height
         if maxW == 0 && maxH == 0 { return }
         
-//        if let title = leftTitle {
-//            let w = title.boundingSize(size: CGSize(width: maxW, height: maxH), font: leftFont).width
-//
-//            var leftW = w + 5;
-//            if let _ = leftDistance {
-//                leftW = leftDistance! < leftW ? leftW : leftDistance!;
-//            }
-//            var x = CGFloat(0)
-//            if let _ = textfield.leftView {
-//                x = textfield.leftView!.frame.minX
-//            }
-//            leftLabel.frame = CGRect(x: x, y: 0, width: leftW, height: maxH)
-//        }
-//
-//        if let title = rightTitle {
-//            let w = title.boundingSize(size: CGSize(width: maxW, height: maxH), font: rightFont).width
-//            var x = CGFloat(0)
-//            if let _ = textfield.rightView {
-//                x = textfield.rightView!.frame.minX
-//            }
-//            rightLabel.frame = CGRect(x: x, y: 0, width: w + 5, height: maxH)
-//        }
+        if #available(iOS 13, *) {}
+        else {
+            if let title = leftTitle {
+                let w = title.boundingSize(size: CGSize(width: maxW, height: maxH), font: leftFont).width
+
+                var leftW = w + 5;
+                if let _ = leftDistance {
+                    leftW = leftDistance! < leftW ? leftW : leftDistance!;
+                }
+                var x = CGFloat(0)
+                if let _ = textfield.leftView {
+                    x = textfield.leftView!.frame.minX
+                }
+                leftLabel.frame = CGRect(x: x, y: 0, width: leftW, height: maxH)
+            }
+
+            if let title = rightTitle {
+                let w = title.boundingSize(size: CGSize(width: maxW, height: maxH), font: rightFont).width
+                var x = CGFloat(0)
+                if let _ = textfield.rightView {
+                    x = textfield.rightView!.frame.minX
+                }
+                rightLabel.frame = CGRect(x: x, y: 0, width: w + 5, height: maxH)
+            }
+        }
         
         // 处理下划线
         if showUnderline {
