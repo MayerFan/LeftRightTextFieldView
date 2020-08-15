@@ -120,12 +120,11 @@
     // 2
     _titleLabel2.text = @"2. 左侧可变文本，右侧文本";
     _titleLabel2.font = kFontRegular(13);
-    _titleLabel2.textColor = kColor(0xa2a8c3);
     NSMutableAttributedString *attM = [[NSMutableAttributedString alloc] initWithString:@"姓名(仅支持英文)"];
     NSRange range = [attM.string rangeOfString:@"(仅支持英文)"];
     if (range.location != NSNotFound) {
         [attM addAttributes:@{NSFontAttributeName: kFontMedium(15),
-                              NSForegroundColorAttributeName: kColor(0xa2a8c3)
+                              NSForegroundColorAttributeName: kColor(0x23c0af)
         } range:range];
         _textFieldView2.leftAttriTitle = attM;
     }

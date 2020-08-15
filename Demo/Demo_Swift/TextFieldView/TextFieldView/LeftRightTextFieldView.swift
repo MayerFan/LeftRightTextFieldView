@@ -156,7 +156,7 @@ class LeftRightTextFieldView: UIView {
             if let title = leftAttriTitle {
                 leftTitle = title.string
                 leftLabel.attributedText = title
-                setNeedsLayout()
+//                setNeedsLayout()
             }
         }
     }

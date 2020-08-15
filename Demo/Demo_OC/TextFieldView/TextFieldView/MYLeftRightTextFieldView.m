@@ -290,9 +290,8 @@
 
 - (void)setLeftAttriTitle:(NSAttributedString *)leftAttriTitle {
     _leftAttriTitle = leftAttriTitle;
-    _leftTitle = leftAttriTitle.string;
+    self.leftTitle = leftAttriTitle.string;
     self.leftLabel.attributedText = leftAttriTitle;
-    [self setNeedsLayout];
 }
 
 - (void)setRightTitle:(NSString *)rightTitle {
