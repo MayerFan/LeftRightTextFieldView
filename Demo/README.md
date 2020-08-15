@@ -6,7 +6,7 @@
 
 ## 概览
 
-![avatar](/Demo/Demo_Swift/TextFieldView/Images/summary.png)
+![avatar](/Demo/Images/summary.png)
 
 
 ## 支持OC版本

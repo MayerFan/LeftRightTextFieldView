@@ -10,6 +10,7 @@
 		626BF906E4F6C0D9F2981444 /* Pods_Demo_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460B5A3A1C793B90B85B7BDE /* Pods_Demo_Swift.framework */; };
 		752CD33E24E6B51600A97ED5 /* NSString+TextSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 752CD33D24E6B51600A97ED5 /* NSString+TextSize.m */; };
 		752CD34024E7BC8400A97ED5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 752CD33F24E7BC8300A97ED5 /* README.md */; };
+		752CD34324E7BE0E00A97ED5 /* summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 752CD34224E7BE0E00A97ED5 /* summary.png */; };
 		75336A6924E53FF800A17C7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75336A6824E53FF800A17C7B /* AppDelegate.swift */; };
 		75336A7024E53FF800A17C7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75336A6E24E53FF800A17C7B /* Main.storyboard */; };
 		75336A7224E53FFA00A17C7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75336A7124E53FFA00A17C7B /* Assets.xcassets */; };
@@ -25,7 +26,6 @@
 		75336ABD24E5433F00A17C7B /* String+Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75336AB924E5433F00A17C7B /* String+Match.swift */; };
 		75336ABE24E5433F00A17C7B /* UIColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75336ABA24E5433F00A17C7B /* UIColor+Helper.swift */; };
 		75336AC024E5448B00A17C7B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75336ABF24E5448B00A17C7B /* ViewController.swift */; };
-		75336AC824E546D500A17C7B /* summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 75336AC524E546D500A17C7B /* summary.png */; };
 		75336ACE24E54A8200A17C7B /* NSString+Match.m in Sources */ = {isa = PBXBuildFile; fileRef = 75336ACD24E54A8200A17C7B /* NSString+Match.m */; };
 		75336AD124E560E700A17C7B /* MYLeftRightTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75336AD024E560E700A17C7B /* MYLeftRightTextFieldView.m */; };
 		9F84E0FB7D1F5E51F2D7F13C /* Pods_Demo_OC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8AFACCD7EC9B2EA1C8AF57 /* Pods_Demo_OC.framework */; };
@@ -39,6 +39,7 @@
 		752CD33C24E6B51600A97ED5 /* NSString+TextSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+TextSize.h"; sourceTree = "<group>"; };
 		752CD33D24E6B51600A97ED5 /* NSString+TextSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+TextSize.m"; sourceTree = "<group>"; };
 		752CD33F24E7BC8300A97ED5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		752CD34224E7BE0E00A97ED5 /* summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = summary.png; sourceTree = "<group>"; };
 		75336A6624E53FF800A17C7B /* Demo_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75336A6824E53FF800A17C7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75336A6F24E53FF800A17C7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,7 +61,6 @@
 		75336AB924E5433F00A17C7B /* String+Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Match.swift"; sourceTree = "<group>"; };
 		75336ABA24E5433F00A17C7B /* UIColor+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Helper.swift"; sourceTree = "<group>"; };
 		75336ABF24E5448B00A17C7B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		75336AC524E546D500A17C7B /* summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = summary.png; sourceTree = "<group>"; };
 		75336AC924E5480600A17C7B /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
 		75336ACC24E54A8200A17C7B /* NSString+Match.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Match.h"; sourceTree = "<group>"; };
 		75336ACD24E54A8200A17C7B /* NSString+Match.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Match.m"; sourceTree = "<group>"; };
@@ -114,6 +114,14 @@
 				9A8AFACCD7EC9B2EA1C8AF57 /* Pods_Demo_OC.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		752CD34124E7BE0E00A97ED5 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				752CD34224E7BE0E00A97ED5 /* summary.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		75336A6724E53FF800A17C7B /* Demo_Swift */ = {
@@ -185,19 +193,10 @@
 		75336AC324E546D500A17C7B /* TextFieldView */ = {
 			isa = PBXGroup;
 			children = (
-				75336AC424E546D500A17C7B /* Images */,
 				75336AC724E546D500A17C7B /* Tool */,
 				75336AC624E546D500A17C7B /* TextFieldView */,
 			);
 			path = TextFieldView;
-			sourceTree = "<group>";
-		};
-		75336AC424E546D500A17C7B /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				75336AC524E546D500A17C7B /* summary.png */,
-			);
-			path = Images;
 			sourceTree = "<group>";
 		};
 		75336AC624E546D500A17C7B /* TextFieldView */ = {
@@ -225,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				752CD33F24E7BC8300A97ED5 /* README.md */,
+				752CD34124E7BE0E00A97ED5 /* Images */,
 				75336A6724E53FF800A17C7B /* Demo_Swift */,
 				75336A9B24E541FA00A17C7B /* Demo_OC */,
 				75CE0BBD22DEC8F200346BC0 /* Products */,
@@ -336,8 +336,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75336AC824E546D500A17C7B /* summary.png in Resources */,
 				75336AAC24E541FC00A17C7B /* LaunchScreen.storyboard in Resources */,
+				752CD34324E7BE0E00A97ED5 /* summary.png in Resources */,
 				752CD34024E7BC8400A97ED5 /* README.md in Resources */,
 				75336AA924E541FC00A17C7B /* Assets.xcassets in Resources */,
 				75336AA724E541FB00A17C7B /* Main.storyboard in Resources */,
